@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SensorApp</string>
+    <string name="asse_z">Asse Z</string>
+    <string name="asse_y">Asse Y</string>
+    <string name="asse_x">Asse X</string>
+    <string name="accelerometro">Accelerometro</string>
+    <string name="asse_barometro">asse_barometro</string>
+</resources>
