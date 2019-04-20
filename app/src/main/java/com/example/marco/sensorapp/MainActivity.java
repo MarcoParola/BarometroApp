@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -56,8 +58,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         if(s == barometro){
             float bar = values[0];
             long unixTime = System.currentTimeMillis();
+            String currentTime;
+            currentTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(new Date());
+            Log.i("current time: ", currentTime);
             tv_barometro.setText(String.valueOf(bar));
-            csv_string = Long.toString(unixTime) + ',' + Float.toString(bar) + '\n';
+            csv_string = Long.toString(unixTime) + ',' + Float.toString(bar) + ',' + currentTime + '\n';
 
             try {
                 File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "log.csv");
