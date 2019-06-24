@@ -11,6 +11,7 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
+    // Variabili
     private boolean inizializzato;
     private SensorManager sensorManager;
     private Sensor barometro;
@@ -25,6 +26,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_main);
 
         inizializzato = false;
+        
+        // Istanzio un oggetto sensorManager e da questo prendo un riferimento 
+        // del sensore barometrico
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         barometro = sensorManager.getDefaultSensor(Sensor.TYPE_PRESSURE);
 
@@ -39,12 +43,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
 
-    // Stoppo sennò continuo a registrare
+    // Deregistro il listener del sensore, altrimenti continuo a registrare,
+    // anche quando non uso l'applicazione, causando uno spreco di batteria
     protected void onPause(){
         super.onPause();
         sensorManager.unregisterListener(this);
     }
 
+    // Callback che viene richiamato ogni volta che il sensore invia un nuovo dato
     public void onSensorChanged(SensorEvent event) {
         registerData(event.sensor, event.values);
     }
