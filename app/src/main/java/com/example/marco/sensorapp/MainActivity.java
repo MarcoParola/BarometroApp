@@ -71,7 +71,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             csv_string = Long.toString(unixTime) + ',' + Float.toString(bar) + ',' + currentTime + '\n';
 
             try {
-                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "log.csv");
+                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
+                                     "log.csv");
 
                 // if file doesnt exists, then create it
                 if (!file.exists()) {
